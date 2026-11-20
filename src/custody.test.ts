@@ -8,5 +8,7 @@ describe("custody steps", () => {
     expect(released.ok && released.state).toBe("released");
     expect(cancelled.ok && cancelled.state).toBe("cancelled");
     expect(walk(["paid", "delivered"]).ok).toBe(false);
+    expect(walk(["paid", "shipped", "cancelled"]).ok).toBe(false);
+    expect(walk(["shipped"]).ok).toBe(false);
   });
 });
